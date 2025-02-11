@@ -32,9 +32,30 @@
             <?php
                 if($_SERVER["REQUEST_METHOD"] = "GET"); {
 
+
+                    // $input = $_GET['input'];
+                    $todolist = 'todolist.txt';
+                    $something = 'something.txt';
+
+
+                    if(file_exists($todolist)) {
+                        $data = file_get_contents($todolist);
+                    }
+                    if(!empty($data)) {
+                        $data = explode("\n", trim($data));
+                    } else {
+                        $data = [];
+                    }
                     
-                    $input = $_GET['input'];
-                    
+                    echo "<br>";
+                    echo "<br>";
+                   
+
+                        
+                    foreach($data as $inp) {
+                        echo $inp;
+                        echo "<br>";
+                    }
 
                 }
             ?>            
