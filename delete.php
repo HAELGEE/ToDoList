@@ -24,7 +24,7 @@
     <main>
         <div class="div-main">
             <h2>Delete Section</h2>
-            <form method="POST" action="">
+            <form method="GET" action="">
                 <button name="delete-button">DELETE</button>
             </form>
             <p>Warning!</p>
@@ -32,7 +32,7 @@
         </div>
         <div class="div-main">
             <?php
-                if($_SERVER["REQUEST_METHOD"] = "POST"); {
+                if($_SERVER["REQUEST_METHOD"] = "GET"); {
 
                     // $delete = $_POST['delete-button'];
 

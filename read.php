@@ -24,12 +24,20 @@
     <main>
         <div class="div-main">
             <h2>Read Section</h2>
-            <form method="POST" action="">
+            <form method="GET" action="">
                 <input name="input" type="text">
             </form>
         </div>
         <div class="div-main">
-            
+            <?php
+                if($_SERVER["REQUEST_METHOD"] = "GET"); {
+
+                    
+                    $input = $_GET['input'];
+                    
+
+                }
+            ?>            
         </div>
     </main>
 </body>
