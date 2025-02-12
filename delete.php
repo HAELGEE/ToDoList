@@ -60,7 +60,7 @@
 
                     } 
                     elseif(isset($_GET['delete-button']) && isset($_GET['single']) && !isset($_GET['all'])) {
-
+                    
                         $todolist = file_get_contents('todolist.txt');
                         $something = file_get_contents('something.txt');
                         $merged = "ToDoList.txt:\n" . $todolist . "\n\n" . "Something.txt:\n" . $something;   
@@ -96,15 +96,25 @@
                             if(!empty($something)) 
                                 echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove2=$index' class='cpknappen'> Delete </a></p>";                         
                         }
+                        
 
+                        $filename1 = 'todolist.txt';
+                        $filename2 = 'something.txt';
                         
                         //Tar bort den valda i den index ifrån listan
                         if(isset($_GET['remove1'])) {
-                            unset($todolist[$_GET['remove1']]);    
-                            
+                            unset($todolist[$_GET['remove1']]); 
+                            $todolist = array_values($todolist);
+                            file_put_contents($filename1, implode("\n", $todolist) . "\n");
+                            header("Location: delete.php");
+                            exit;                               
                         }
-                        if(isset($_GET['remove2'])) {
+                        if(isset($_GET['remove2'])) {                            
                             unset($something[$_GET['remove2']]);
+                            $something = array_values($something);
+                            file_put_contents($filename2, implode("\n", $something) . "\n");
+                            header("Location: delete.php");
+                            exit;
                         }                        
                     } 
                     elseif(isset($_GET['delete-button'])){

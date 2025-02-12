@@ -2,5 +2,4 @@ ToDoList.txt:
 
 
 Something.txt:
-This is something.
-This is something Else.
+
