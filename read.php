@@ -38,7 +38,6 @@
 
                         $todolist = file_get_contents('todolist.txt');
                         $something = file_get_contents('something.txt');
-                        echo var_dump($todolist);
 
                         $merged = "ToDoList.txt:\n" . $todolist . "\n\n" . "Something.txt:\n" . $something;
 
