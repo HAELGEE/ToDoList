@@ -33,11 +33,6 @@
                         <input type="checkbox" name="all" id="">
                     </div>
 
-                    <div class="div-in">
-                        <label for="single">Delete single</label>
-                        <input type="checkbox" name="single" id="">
-                    </div>
-
                 </div>
 
                 <button name="delete-button" type="submit">DELETE</button>
@@ -49,78 +44,77 @@
             <?php
                 if($_SERVER["REQUEST_METHOD"] = "GET"); {
                     
-                    
+                    // if(isset($_GET['delete-button'])){
 
-                    if(isset($_GET['delete-button']) && isset($_GET['all']) && !isset($_GET['single'])){
                         
-                        $myFile = fopen('todolist.txt', 'w');
-                        fclose($myFile);
+                        if(isset($_GET['delete-button']) && isset($_GET['all']) && !isset($_GET['single'])){
+                            
+                            $myFile = fopen('todolist.txt', 'w');
+                            fclose($myFile);
 
-                        echo "Everything inside ToDoList is now removed";
+                            echo "Everything inside ToDoList is now removed";
 
-                    } 
-                    elseif(isset($_GET['delete-button']) && isset($_GET['single']) && !isset($_GET['all'])) {
-                    
-                        $todolist = file_get_contents('todolist.txt');
-                        $something = file_get_contents('something.txt');
-                        $merged = "ToDoList.txt:\n" . $todolist . "\n\n" . "Something.txt:\n" . $something;   
+                        } 
+                        else {
+                            
+                            $todolist = file_get_contents('todolist.txt');
+                            $something = file_get_contents('something.txt');
+                            $merged = "ToDoList.txt:\n" . $todolist . "\n\n" . "Something.txt:\n" . $something;   
 
-                        file_put_contents('all.txt', $merged);
-                        $output = 'all.txt';
+                            file_put_contents('all.txt', $merged);
+                            $output = 'all.txt';
 
-                        if(file_exists($output)) {
-                            $data = file_get_contents($output);
-                        }
-                        if(!empty($data)) {
-                            $data = explode("\n", trim($data));
-                        } else {
-                            $data = [];
-                        }
+                            if(file_exists($output)) {
+                                $data = file_get_contents($output);
+                            }
+                            if(!empty($data)) {
+                                $data = explode("\n", trim($data));
+                            } else {
+                                $data = [];
+                            }
+                            
+                            echo "<br>";
+                            echo "<br>";
+
+                            
+                            $todolist = explode("\n", trim($todolist));
+                            $something = explode("\n", trim($something));
+
                         
-                        echo "<br>";
-                        echo "<br>";
+                            echo "<u>ToDoList.txt:</u>";
+                            foreach($todolist as $index => $input) {     
+                                if(!is_null($todolist) && $todolist[0] != "")                       
+                                    echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove1=$index' class='cpknappen'> Delete </a></p>";
+                            }
 
-                           
-                        $todolist = explode("\n", trim($todolist));
-                        $something = explode("\n", trim($something));
+                            echo "<br><br><u>Something.txt:</u>";
+                            foreach($something as $index => $input) {
+                                if(!empty($something) && $something[0] != "") 
+                                    echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove2=$index' class='cpknappen'> Delete </a></p>";                         
+                            }
+                            
+                            $filename1 = 'todolist.txt';
+                            $filename2 = 'something.txt';
+                            
+                            if(isset($_GET['remove1'])) {
+                                unset($todolist[$_GET['remove1']]); 
+                                $todolist = array_values($todolist);
+                                file_put_contents($filename1, implode("\n", $todolist) . "\n");
+                                header("Location: delete.php");
+                                exit;                               
+                            }
 
-                       
-                        echo "<u>ToDoList.txt:</u>";
-                        foreach($todolist as $index => $input) {     
-                            if(!empty($todolist))                       
-                                echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove1=$index' class='cpknappen'> Delete </a></p>";
+                            if(isset($_GET['remove2'])) {                            
+                                unset($something[$_GET['remove2']]);
+                                $something = array_values($something);
+                                file_put_contents($filename2, implode("\n", $something) . "\n");
+                                header("Location: delete.php");
+                                exit;
+                            }                             
                         }
-
-                        echo "<br><br><u>Something.txt:</u>";
-                        foreach($something as $index => $input) {
-                            if(!empty($something)) 
-                                echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove2=$index' class='cpknappen'> Delete </a></p>";                         
-                        }
-                        
-
-                        $filename1 = 'todolist.txt';
-                        $filename2 = 'something.txt';
-                        
-                        //Tar bort den valda i den index ifrån listan
-                        if(isset($_GET['remove1'])) {
-                            unset($todolist[$_GET['remove1']]); 
-                            $todolist = array_values($todolist);
-                            file_put_contents($filename1, implode("\n", $todolist) . "\n");
-                            header("Location: delete.php");
-                            exit;                               
-                        }
-                        if(isset($_GET['remove2'])) {                            
-                            unset($something[$_GET['remove2']]);
-                            $something = array_values($something);
-                            file_put_contents($filename2, implode("\n", $something) . "\n");
-                            header("Location: delete.php");
-                            exit;
-                        }                        
-                    } 
-                    elseif(isset($_GET['delete-button'])){
-                        echo "Something is <u>missing</u> or wrong!";
-                    }
-                }
+                            
+                    // }
+                }                
             ?>
         </div>
     </main>
