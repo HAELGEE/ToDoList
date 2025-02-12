@@ -136,3 +136,6 @@ a {
     padding: 0.2rem;    
 }
 
+u {
+    white-space: nowrap;
+}

@@ -1,6 +1,4 @@
 ToDoList.txt:
-asd
-asd
 
 
 Something.txt:

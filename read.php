@@ -25,8 +25,8 @@
         <div class="div-main">
             <h2>Read Section</h2>
             <form method="GET" action="" style="display: flex; flex-direction: column;">
-                <input name="things" type="text">
-                <button name="submit" type="submit">Submit</button>
+                <input name="things" type="text" style="margin-bottom: 1rem;">
+                <button name="submit" type="submit" >Submit</button>
             </form>
         </div>
         <div class="div-main">

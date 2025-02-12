@@ -26,7 +26,7 @@
             <h2>Delete Section</h2>
             <form method="GET" action="">
 
-                <div class="div-out">
+                <div class="div-out" style="margin-bottom: 1rem;">
 
                     <div class="div-in">
                         <label for="all">Delete all</label>
@@ -48,14 +48,18 @@
         <div class="div-main">
             <?php
                 if($_SERVER["REQUEST_METHOD"] = "GET"); {
-                    // echo var_dump($_GET['delete-button']);
+                    
+                    
 
-                    if(isset($_GET['delete-button'])){
-
+                    if(isset($_GET['delete-button']) && isset($_GET['all']) && !isset($_GET['single'])){
+                        
                         $myFile = fopen('todolist.txt', 'w');
                         fclose($myFile);
 
-                    } else {
+                        echo "Everything inside ToDoList is now removed";
+
+                    } 
+                    elseif(isset($_GET['delete-button']) && isset($_GET['single']) && !isset($_GET['all'])) {
 
                         $todolist = file_get_contents('todolist.txt');
                         $something = file_get_contents('something.txt');
@@ -84,24 +88,27 @@
                         echo "<u>ToDoList.txt:</u>";
                         foreach($todolist as $index => $input) {     
                             if(!empty($todolist))                       
-                                echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove2=$index' class='cpknappen'> Delete </a></p>";
+                                echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove1=$index' class='cpknappen'> Delete </a></p>";
                         }
 
-                        echo "<br><u>Something.txt:</u>";
+                        echo "<br><br><u>Something.txt:</u>";
                         foreach($something as $index => $input) {
                             if(!empty($something)) 
                                 echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove2=$index' class='cpknappen'> Delete </a></p>";                         
                         }
 
                         
-
+                        //Tar bort den valda i den index ifrån listan
                         if(isset($_GET['remove1'])) {
-                            unset($todolist[$_GET['remove1']]);
+                            unset($todolist[$_GET['remove1']]);    
+                            
                         }
                         if(isset($_GET['remove2'])) {
                             unset($something[$_GET['remove2']]);
-                        }
-                        
+                        }                        
+                    } 
+                    elseif(isset($_GET['delete-button'])){
+                        echo "Something is <u>missing</u> or wrong!";
                     }
                 }
             ?>

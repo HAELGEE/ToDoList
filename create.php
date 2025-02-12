@@ -30,7 +30,7 @@
                 <input name="things" type="text">
 
                 <label for="text" style="margin-top: 1rem; margin-bottom: 1rem; font-size: 2rem;">Text to add:</label>
-                <input name="text" type="text">
+                <input name="text" type="text" style="margin-bottom: 1rem;">
                 <button name="submit" type="submit">Submit</button>
 
             </form>
