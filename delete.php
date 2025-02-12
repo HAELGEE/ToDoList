@@ -25,6 +25,21 @@
         <div class="div-main">
             <h2>Delete Section</h2>
             <form method="GET" action="">
+
+                <div class="div-out">
+
+                    <div class="div-in">
+                        <label for="all">Delete all</label>
+                        <input type="checkbox" name="all" id="">
+                    </div>
+
+                    <div class="div-in">
+                        <label for="single">Delete single</label>
+                        <input type="checkbox" name="single" id="">
+                    </div>
+
+                </div>
+
                 <button name="delete-button" type="submit">DELETE</button>
             </form>
             <p>Warning!</p>
@@ -61,33 +76,30 @@
                         echo "<br>";
                         echo "<br>";
 
-                        // foreach($data as $inp) {
-                        //     echo $inp;
-                        //     echo "<br>";
-                        // }     
+                           
                         $todolist = explode("\n", trim($todolist));
                         $something = explode("\n", trim($something));
 
-                        $index = 10000;
-
+                       
                         echo "<u>ToDoList.txt:</u>";
-                        foreach($todolist as $index => $input) {
-                            echo "$input";
-                            echo "<a href='?remove1=$index' class='cpknappen'> Delete </a>";
+                        foreach($todolist as $index => $input) {     
+                            if(!empty($todolist))                       
+                                echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove2=$index' class='cpknappen'> Delete </a></p>";
                         }
 
                         echo "<br><u>Something.txt:</u>";
                         foreach($something as $index => $input) {
-                            echo "$input <a href='?remove2=$index' class='cpknappen'> Delete </a>";                            
+                            if(!empty($something)) 
+                                echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove2=$index' class='cpknappen'> Delete </a></p>";                         
                         }
 
-
+                        
 
                         if(isset($_GET['remove1'])) {
-                            unset($todolist[$index]);
+                            unset($todolist[$_GET['remove1']]);
                         }
                         if(isset($_GET['remove2'])) {
-                            unset($todolist[$index]);
+                            unset($something[$_GET['remove2']]);
                         }
                         
                     }

@@ -64,7 +64,7 @@
                             $data[] = $text;
                             
                             //Spara array till rader i fil
-                            file_put_contents($filename, implode("\n", $data));
+                            file_put_contents($filename, implode("\n", $data) . "\n");
 
                             echo "Din text: " . "'$text'" . " har nu blivit sparad i: " . "'$input'";
 
@@ -89,7 +89,7 @@
                             $data[] = $text;
                             
                             //Spara array till rader i fil
-                            file_put_contents($filename, implode("\n", $data));
+                            file_put_contents($filename, implode("\n", $data) . "\n");
 
                             echo "Din text: " . "'$text'" . " har nu blivit sparad i: " . "'$input'";
 
