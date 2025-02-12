@@ -16,11 +16,6 @@ body>main>div:last-of-type {
     
 }
 
-/* .div-main__form {
-    display: flex;
-    padding: 10rem;
-    background-color: aqua;
-} */
 
 body>main>div:first-child>form>label{
     margin-bottom: 1rem;
