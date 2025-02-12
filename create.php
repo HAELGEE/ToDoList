@@ -26,7 +26,7 @@
             <h2>Create Section</h2>
             <form method="GET" action="" style="display: flex; flex-direction: column;">
 
-                <label for="input" style="margin-bottom: 1rem; font-size: 2rem;">Wich .txt?:</label>
+                <label for="input" style="margin-bottom: 1rem; font-size: 2rem;">To wich .txt do you want to add?:</label>
                 <input name="things" type="text">
 
                 <label for="text" style="margin-top: 1rem; margin-bottom: 1rem; font-size: 2rem;">Text to add:</label>
@@ -66,7 +66,7 @@
                             //Spara array till rader i fil
                             file_put_contents($filename, implode("\n", $data));
 
-                            echo "Din text:" . "'$text'" . "har nu blivit sparad i: " . "'$input'";
+                            echo "Din text: " . "'$text'" . " har nu blivit sparad i: " . "'$input'";
 
                         }
                         elseif($_GET['things'] == "something") {
@@ -91,7 +91,7 @@
                             //Spara array till rader i fil
                             file_put_contents($filename, implode("\n", $data));
 
-                            echo "Din text:" . $text . " har nu blivit sparad i: " . $input;
+                            echo "Din text: " . "'$text'" . " har nu blivit sparad i: " . "'$input'";
 
                         } 
                         else {

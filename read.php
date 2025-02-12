@@ -32,7 +32,36 @@
         <div class="div-main">
             <?php
                 if($_SERVER["REQUEST_METHOD"] == "GET") {
-                    
+
+
+                    if(isset($_GET['submit']) == ""){
+                        $todolist = file_get_contents('todolist.txt');
+                        $something = file_get_contents('something.txt');
+                        $merged = "ToDoList.txt:\n" . $todolist . "\n\n" . "Something.txt:\n" . $something;
+
+                        file_put_contents('all.txt', $merged);
+                        $output = 'all.txt';
+
+                        if(file_exists($output)) {
+                            $data = file_get_contents($output);
+                        }
+                        if(!empty($data)) {
+                            $data = explode("\n", trim($data));
+                        } else {
+                            $data = [];
+                        }
+                        
+                        echo "<br>";
+                        echo "<br>";
+                                                
+                        foreach($data as $inp) {
+                            echo $inp;
+                            echo "<br>";
+                        }         
+                    }
+
+
+
                     if(isset($_GET['things'])){
                         $input = strtolower($_GET['things']);
                         $output = "";
@@ -68,7 +97,7 @@
                         foreach($data as $inp) {
                             echo $inp;
                             echo "<br>";
-                        }                      
+                        }  
                     }
                 }
             ?>            
