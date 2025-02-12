@@ -68,13 +68,26 @@
                         $todolist = explode("\n", trim($todolist));
                         $something = explode("\n", trim($something));
 
-                        echo "ToDoList.txt:<br>";
-                        foreach($todolist as $inp) {
-                            echo "$inp<br>";
+                        $index = 10000;
+
+                        echo "<u>ToDoList.txt:</u>";
+                        foreach($todolist as $index => $input) {
+                            echo "$input";
+                            echo "<a href='?remove1=$index' class='cpknappen'> Delete </a>";
                         }
-                        echo "Something.txt:<br>";
-                        foreach($something as $inp) {
-                            echo "$inp<br>";
+
+                        echo "<br><u>Something.txt:</u>";
+                        foreach($something as $index => $input) {
+                            echo "$input <a href='?remove2=$index' class='cpknappen'> Delete </a>";                            
+                        }
+
+
+
+                        if(isset($_GET['remove1'])) {
+                            unset($todolist[$index]);
+                        }
+                        if(isset($_GET['remove2'])) {
+                            unset($todolist[$index]);
                         }
                         
                     }

@@ -96,3 +96,10 @@ a {
     padding: 0.5rem;
     font-size: 3rem;
 }
+
+.cpknappen {
+    color: red;
+    font-size: 1.5rem;
+    border: solid 0.1rem red;
+    padding: 0.2rem;
+}
