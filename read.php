@@ -32,7 +32,7 @@
             <?php
                 if($_SERVER["REQUEST_METHOD"] == "GET") {
                     
-                    if(!empty($_GET['things'])){
+                    if(isset($_GET['things']) && htmlspecialchars($_GET['things'])){
                         $input = $_GET['things'];
                         $output = "";
 
@@ -61,14 +61,13 @@
                                 $data = [];
                             }
                             
-                            echo "<br>";
-                            echo "<br>";
+                        echo "<br>";
+                        echo "<br>";
                                                     
-                            foreach($data as $inp) {
-                                echo $inp;
-                                echo "<br>";
-                            }
-                      
+                        foreach($data as $inp) {
+                            echo $inp;
+                            echo "<br>";
+                        }                      
                     }
                 }
             ?>            
