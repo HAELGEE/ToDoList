@@ -1,0 +1,9 @@
+ToDoList.txt:
+Städa
+Feja
+Jobba
+Sova
+
+Something.txt:
+This is something.
+This is something Else.

@@ -25,20 +25,55 @@
         <div class="div-main">
             <h2>Read Section</h2>
             <form method="GET" action="">
-                <input name="input" type="text">
+                <input name="things" type="text">
             </form>
         </div>
         <div class="div-main">
             <?php
-                if($_SERVER["REQUEST_METHOD"] = "GET"); {
-
+                if($_SERVER["REQUEST_METHOD"] == "GET") {
                     
-                    $input = $_GET['input'];
-                    
+                    if(!empty($_GET['things'])){
+                        $input = $_GET['things'];
+                        $output = "";
 
+                        $todolist = file_get_contents('todolist.txt');
+                        $something = file_get_contents('something.txt');
+
+                        $merged = "ToDoList.txt:\n" . $todolist . "\n\n" . "Something.txt:\n" . $something;
+
+                        file_put_contents('all.txt', $merged);
+
+                        if($input == "todolist")
+                            $output = 'todolist.txt';
+                        elseif($input == "something")
+                            $output = 'something.txt';      
+                        elseif($input == "all")
+                            $output = 'all.txt';                    
+                        else
+                            echo "Nothing found";
+                        
+                            if(file_exists($output)) {
+                                $data = file_get_contents($output);
+                            }
+                            if(!empty($data)) {
+                                $data = explode("\n", trim($data));
+                            } else {
+                                $data = [];
+                            }
+                            
+                            echo "<br>";
+                            echo "<br>";
+                                                    
+                            foreach($data as $inp) {
+                                echo $inp;
+                                echo "<br>";
+                            }
+                      
+                    }
                 }
             ?>            
         </div>
+        
     </main>
 </body>
 </html>
