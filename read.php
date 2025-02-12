@@ -32,12 +32,13 @@
             <?php
                 if($_SERVER["REQUEST_METHOD"] == "GET") {
                     
-                    if(isset($_GET['things']) && htmlspecialchars($_GET['things'])){
-                        $input = $_GET['things'];
+                    if(isset($_GET['things'])){
+                        $input = strtolower($_GET['things']);
                         $output = "";
 
                         $todolist = file_get_contents('todolist.txt');
                         $something = file_get_contents('something.txt');
+                        echo var_dump($todolist);
 
                         $merged = "ToDoList.txt:\n" . $todolist . "\n\n" . "Something.txt:\n" . $something;
 

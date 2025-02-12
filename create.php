@@ -24,12 +24,24 @@
     <main>
         <div class="div-main">
             <h2>Create Section</h2>
-            <form method="POST" action="">
+            <form method="GET" action="" style="display: flex; flex-direction: column;">
+                <label for="input" style="margin-bottom: 1rem; font-size: 2rem;">Wich .txt?:</label>
                 <input name="input" type="text">
+                <label for="text" style="margin-top: 1rem; margin-bottom: 1rem; font-size: 2rem;">Text to add:</label>
+                <input name="text" type="text">
             </form>
         </div>
         <div class="div-main">
-            
+            <?php
+                if($_SERVER['REQUEST_METHOD'] == "GET"){
+                    if(isset($_GET['input']) && isset($_GET['text'])){
+
+
+
+
+                    }
+                }
+            ?>
         </div>
     </main>
 </body>
