@@ -1,6 +1,1 @@
-[
-    {
-        "task": "knarka",
-        "done": false
-    }
-]
+[]

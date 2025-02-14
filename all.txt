@@ -1,8 +1,6 @@
 ToDoList.txt:
 
-knarka
 
 
 Something.txt:
-1
-6
+

@@ -43,77 +43,98 @@
         <div class="div-main">
             <?php
                 if($_SERVER["REQUEST_METHOD"] = "GET"); {
-                    
-                    // if(isset($_GET['delete-button'])){
 
+                    if(isset($_GET['delete-button']) && isset($_GET['all']) && !isset($_GET['single'])){
                         
-                        if(isset($_GET['delete-button']) && isset($_GET['all']) && !isset($_GET['single'])){
-                            
-                            $myFile = fopen('todolist.txt', 'w');
-                            fclose($myFile);
+                        $myFile = fopen('todolist.txt', 'w');
+                        $myFile2 = fopen('todolistJSON.txt', 'w');
+                        fclose($myFile2);
+                        fclose($myFile);
+                        echo "Everything inside ToDoList is now removed";
 
-                            echo "Everything inside ToDoList is now removed";
-
-                        } 
-                        else {
-                            
-                            $todolist = file_get_contents('todolist.txt');
-                            $something = file_get_contents('something.txt');
-                            $merged = "ToDoList.txt:\n" . $todolist . "\n\n" . "Something.txt:\n" . $something;   
-
-                            file_put_contents('all.txt', $merged);
-                            $output = 'all.txt';
-
-                            if(file_exists($output)) {
-                                $data = file_get_contents($output);
-                            }
-                            if(!empty($data)) {
-                                $data = explode("\n", trim($data));
-                            } else {
-                                $data = [];
-                            }
-                            
-                            echo "<br>";
-                            echo "<br>";
-
-                            
-                            $todolist = explode("\n", trim($todolist));
-                            $something = explode("\n", trim($something));
-
+                    } 
+                    else {
                         
-                            echo "<u>ToDoList.txt:</u>";
-                            foreach($todolist as $index => $input) {     
-                                if(!is_null($todolist) && $todolist[0] != "")                       
-                                    echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove1=$index' class='cpknappen'> Delete </a></p>";
-                            }
+                        $todolist = file_get_contents('todolist.txt');
+                        $todolistJSON = json_decode(file_get_contents('todolistJSON.txt'), true);
 
-                            echo "<br><br><u>Something.txt:</u>";
-                            foreach($something as $index => $input) {
-                                if(!empty($something) && $something[0] != "") 
-                                    echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove2=$index' class='cpknappen'> Delete </a></p>";                         
-                            }
-                            
-                            $filename1 = 'todolist.txt';
-                            $filename2 = 'something.txt';
-                            
-                            if(isset($_GET['remove1'])) {
-                                unset($todolist[$_GET['remove1']]); 
-                                $todolist = array_values($todolist);
-                                file_put_contents($filename1, implode("\n", $todolist) . "\n");
-                                header("Location: delete.php");
-                                exit;                               
-                            }
+                        $something = file_get_contents('something.txt');
+                        $somethingJSON = json_decode(file_get_contents('somethingJSON.txt'), true);
 
-                            if(isset($_GET['remove2'])) {                            
-                                unset($something[$_GET['remove2']]);
-                                $something = array_values($something);
-                                file_put_contents($filename2, implode("\n", $something) . "\n");
-                                header("Location: delete.php");
-                                exit;
-                            }                             
+                        $merged = "ToDoList.txt:\n" . $todolist . "\n\n" . "Something.txt:\n" . $something;   
+
+                        $data2 = [];
+                        
+                        if (!is_array($data2)) {
+                        $data2 = []; // Säkerhetsåtgärd om filen har ogiltig JSON
                         }
-                            
-                    // }
+                        
+                        
+
+                        file_put_contents('all.txt', $merged);
+                        $output = 'all.txt';
+
+                        if(file_exists($output)) {
+                            $data = file_get_contents($output);
+                        }
+                        if(!empty($data)) {
+                            $data = explode("\n", trim($data));
+                        } else {
+                            $data = [];
+                        }
+                        
+                        echo "<br>";
+                        echo "<br>";
+
+                        
+                        $todolist = explode("\n", trim($todolist));
+                        $something = explode("\n", trim($something));
+
+                    
+                        echo "<u>ToDoList.txt:</u>";
+                        foreach($todolist as $index => $input) {     
+                            if(!is_null($todolist) && $todolist[0] != "")                       
+                                echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove1=$index' class='cpknappen'> Delete </a></p>";
+                        }
+
+                        echo "<br><br><u>Something.txt:</u>";
+                        foreach($something as $index => $input) {
+                            if(!empty($something) && $something[0] != "") 
+                                echo "<p style='color: greenyellow; font-size: 2rem;'>$input <a href='?remove2=$index' class='cpknappen'> Delete </a></p>";                         
+                        }
+                        
+                        $filename1 = 'todolist.txt';
+                        $filename11 = 'todolistJSON.txt';
+                        $filename2 = 'something.txt';
+                        $filename22 = 'somethingJSON.txt';
+                        
+                        if(isset($_GET['remove1'])) {
+                            unset($todolist[$_GET['remove1']]); 
+                            $todolist = array_values($todolist);
+                            file_put_contents($filename1, implode("\n", $todolist) . "\n");
+
+                            unset($todolistJSON[$_GET['remove1']]);                                 
+                            $todolistJSON = array_values($todolistJSON);
+                            file_put_contents($filename11, json_encode($todolistJSON, JSON_PRETTY_PRINT));
+
+                            header("Location: delete.php");
+                            exit;                               
+                        }
+
+                        if(isset($_GET['remove2'])) {                            
+                            unset($something[$_GET['remove2']]);
+                            $something = array_values($something);
+                            file_put_contents($filename2, implode("\n", $something) . "\n");
+
+                            unset($somethingJSON[$_GET['remove2']]);                                 
+                            $somethingJSON = array_values($somethingJSON);
+                            file_put_contents($filename22, json_encode($somethingJSON, JSON_PRETTY_PRINT));
+
+                            header("Location: delete.php");
+
+                            exit;
+                        }                             
+                    }
                 }                
             ?>
         </div>
