@@ -48,12 +48,8 @@
                 foreach ($data as $index => $task) {
                     $checked = $task['done'] ? 'checked' : '';
 
-                    // Dold input säkerställer att även avmarkerade checkboxar skickas
-                    echo "<p style='color: greenyellow; font-size: 1.5rem;'>
-                            ".$task['task']."
-                            <input type='hidden' name='tasks[$index]' value='0'>
-                            <input type='checkbox' name='tasks[$index]' value='1' class='check-of-doom' $checked>                            
-                            </p>";
+                    
+                    echo "<p style='color: greenyellow; font-size: 1.5rem;'> ".$task['task']." <input type='hidden' name='tasks[$index]' value='0'> <input type='checkbox' name='tasks[$index]' value='1' class='check-of-doom' $checked> </p>";
                 }
             }
 
