@@ -97,7 +97,6 @@
                             
                             //Spara array till rader i fil
                             file_put_contents($filename2, implode("\n", $data2) . "\n");
-
                         }
                         elseif($_GET['things'] == "something") {
 
@@ -133,7 +132,7 @@
                             echo "Din text: " . "'$text'" . " har nu blivit sparad i: " . "'$input'";
 
                             //Sparar i vanlig text för lättare läsning
-                            $filename2 = 'todolist.txt';
+                            $filename2 = 'something.txt';
                             if(file_exists($filename))
                             {
                              //Hämtar allt innehåll i fil som en string

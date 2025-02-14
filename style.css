@@ -140,10 +140,10 @@ u {
     white-space: nowrap;
 }
 
-input[name="check-of-doom"] {
+input[type="checkbox"] {
     margin-left: 1rem;
-    width: 20px;
-    height: 20px;   
+    width: 30px;
+    height: 30px;   
 }
 .Submit-button {
     margin-top: 2rem;
