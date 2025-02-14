@@ -58,7 +58,7 @@ body>main>div:first-child>form{
 body {
     display: flex;
     flex-direction: column;
-    /* background-color: gold; */
+    background-color: black;
 }
 
 h1, h2 {
@@ -138,4 +138,13 @@ a {
 
 u {
     white-space: nowrap;
+}
+
+input[name="check-of-doom"] {
+    margin-left: 1rem;
+    width: 20px;
+    height: 20px;   
+}
+.Submit-button {
+    margin-top: 2rem;
 }

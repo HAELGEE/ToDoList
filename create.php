@@ -46,53 +46,112 @@
 
                         if($input == "todolist"){
 
-                            $filename = 'todolist.txt';
+                            $filename = 'todolistJSON.txt';
+                            $filename2 = 'todolist.txt';                        
+
+                            $data = [];
+
+
+                            // Sparar i Json format i en separat fil
+                            if(file_exists($filename)) {
+
+                                $content = trim(file_get_contents($filename));
+
+                                if(!empty($content)) {
+
+                                    $data = json_decode($content, true);
+                                    if(!is_array($data)) {
+                                        $data = [];
+                                    }
+                                }
+                            }
+
+                            $newTask = [
+                                "task" => $text,
+                                "done" => false
+                            ];
+
+                            $data[] = $newTask;
+
+                            file_put_contents($filename, json_encode($data, JSON_PRETTY_PRINT));
+
+                            echo "Din text: " . "'$text'" . " har nu blivit sparad i: " . "'$input'";
+
+                            //Sparar i vanlig text för lättare läsning
+                            $filename2 = 'todolist.txt';
                             if(file_exists($filename))
                             {
                              //Hämtar allt innehåll i fil som en string
-                             $data = file_get_contents($filename);
+                             $data2 = file_get_contents($filename2);
                             }
 
                             //Lägg in alla rader från fil till array
-                            if (!empty($data)) {
-                            $data = explode("\n", trim($data));
+                            if (!empty($data2)) {
+                             $data2 = explode("\n", trim($data2));
                             } else {
-                                $data = [];
+                             $data2 = [];
                             }
                             
                             //Lägg till sträng till vår array
-                            $data[] = $text;
+                            $data2[] = $text;
                             
                             //Spara array till rader i fil
-                            file_put_contents($filename, implode("\n", $data) . "\n");
-
-                            echo "Din text: " . "'$text'" . " har nu blivit sparad i: " . "'$input'";
+                            file_put_contents($filename2, implode("\n", $data2) . "\n");
 
                         }
                         elseif($_GET['things'] == "something") {
 
-                            $filename = 'something.txt';
-                            if(file_exists($filename))
-                            {
-                             //Hämtar allt innehåll i fil som en string
-                             $data = file_get_contents($filename);
+                            $filename = 'somethingJSON.txt';
+                            $filename2 = 'something.txt';                        
+
+                            $data = [];
+
+
+                            // Sparar i Json format i en separat fil
+                            if(file_exists($filename)) {
+
+                                $content = trim(file_get_contents($filename));
+
+                                if(!empty($content)) {
+
+                                    $data = json_decode($content, true);
+                                    if(!is_array($data)) {
+                                        $data = [];
+                                    }
+                                }
                             }
 
-                            //Lägg in alla rader från fil till array
-                            if (!empty($data)) {
-                             $data = explode("\n", trim($data));
-                            } else {
-                             $data = [];
-                            }
-                            
-                            //Lägg till sträng till vår array
-                            $data[] = $text;
-                            
-                            //Spara array till rader i fil
-                            file_put_contents($filename, implode("\n", $data) . "\n");
+                            $newTask = [
+                                "task" => $text,
+                                "done" => false
+                            ];
+
+                            $data[] = $newTask;
+
+                            file_put_contents($filename, json_encode($data, JSON_PRETTY_PRINT));
 
                             echo "Din text: " . "'$text'" . " har nu blivit sparad i: " . "'$input'";
 
+                            //Sparar i vanlig text för lättare läsning
+                            $filename2 = 'todolist.txt';
+                            if(file_exists($filename))
+                            {
+                             //Hämtar allt innehåll i fil som en string
+                             $data2 = file_get_contents($filename2);
+                            }
+
+                            //Lägg in alla rader från fil till array
+                            if (!empty($data2)) {
+                             $data2 = explode("\n", trim($data2));
+                            } else {
+                             $data2 = [];
+                            }
+                            
+                            //Lägg till sträng till vår array
+                            $data2[] = $text;
+                            
+                            //Spara array till rader i fil
+                            file_put_contents($filename2, implode("\n", $data2) . "\n");
                         } 
                         else {
                             echo "There is no .txt file named like that";                            
