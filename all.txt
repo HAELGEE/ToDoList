@@ -1,6 +1,7 @@
 ToDoList.txt:
-
+Clean the house
+Shop
 
 
 Something.txt:
-knarka
+

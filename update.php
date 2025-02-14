@@ -63,6 +63,9 @@
                 }
                 
                 file_put_contents($filename, json_encode($data, JSON_PRETTY_PRINT));
+
+                header("Location: update.php");
+                exit;
             }
         ?> 
         </form>

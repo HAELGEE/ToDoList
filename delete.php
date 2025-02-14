@@ -131,7 +131,6 @@
                             file_put_contents($filename22, json_encode($somethingJSON, JSON_PRETTY_PRINT));
 
                             header("Location: delete.php");
-
                             exit;
                         }                             
                     }

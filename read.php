@@ -98,7 +98,7 @@
                             echo $inp;
                             echo "<br>";
                         }  
-                    }
+                    }                    
                 }
             ?>            
         </div>
