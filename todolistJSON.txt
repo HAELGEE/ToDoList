@@ -1,10 +1,6 @@
 [
     {
-        "task": "Clean the house",
-        "done": false
-    },
-    {
-        "task": "Shop",
-        "done": false
+        "task": "St\u00e4da",
+        "done": true
     }
 ]

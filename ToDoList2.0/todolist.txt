@@ -1,0 +1,21 @@
+{
+    "0": {
+        "task": "Dammsuga",
+        "done": true
+    },
+    "1": {
+        "task": "hej",
+        "done": true
+    },
+    "2": {
+        "task": "Dammsuga",
+        "done": true
+    },
+    "3": {
+        "task": "dfg",
+        "done": false
+    },
+    "on": {
+        "done": true
+    }
+}

@@ -1,6 +1,5 @@
 ToDoList.txt:
-Clean the house
-Shop
+Städa
 
 
 Something.txt:
