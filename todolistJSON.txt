@@ -1,6 +1,6 @@
 [
     {
         "task": "St\u00e4da",
-        "done": true
+        "done": false
     }
 ]

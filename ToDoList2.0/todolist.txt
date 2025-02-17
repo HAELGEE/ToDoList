@@ -1,21 +1,14 @@
-{
-    "0": {
-        "task": "Dammsuga",
-        "done": true
-    },
-    "1": {
-        "task": "hej",
-        "done": true
-    },
-    "2": {
-        "task": "Dammsuga",
-        "done": true
-    },
-    "3": {
-        "task": "dfg",
+[
+    {
+        "task": "St\u00e4da",
         "done": false
     },
-    "on": {
-        "done": true
+    {
+        "task": "Dammsuga",
+        "done": false
+    },
+    {
+        "task": "Sova",
+        "done": false
     }
-}
+]
