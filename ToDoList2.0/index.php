@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET"){
         $data = array_values($data);
         file_put_contents($ongoingtask, json_encode($data, JSON_PRETTY_PRINT));
 
-        header("Location: 2.0.php");
+        header("Location: index.php");
         exit;
     }
 
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET"){
     if(isset($_GET['klar'])){
    
         done($_GET['klar']);
-        header("Location: 2.0.php");
+        header("Location: index.php");
         exit;        
     }
 
@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET"){
                     <tr>                        
                         <td>
                             <p>
-                                <?= htmlspecialchars($todo["task"]); ?>
+                                <?php htmlspecialchars($todo["task"]); ?>
                             </p>                                  
                         </td>                        
                         <td>
